@@ -1,0 +1,98 @@
+
+Some important linux commands every devops engineer should know:
+
+
+ls-ltr = list all the files present in the present working directory with timestamp.
+
+sudo = sudo allows a permitted user to execute a command as the superuser or another user, as specified by the security policy.
+
+sort file.txt = sorts the contents of the file according to the ASCII rules (numerically and alphabatically).
+
+df -h =  df displays the amount of disk space available on all  currently mounted  file  systems (-h is for human readable) 
+du -h = disk usage
+
+lsblk = list all the  block storages/volumes attached to the system
+
+free -m = free displays the total amount of free and used physical and swap memory in the system, as well as the buffer and caches used by the kernel. (memory = RAM)
+
+nano = editing tool inpired by pico editor, often known as legacy editor (ctrl+o to save, ctrl+x to exit)
+
+vi = editing tool used by programmers (press insert for editing mode and esc for non-editing mode, press :wq to save+exit and :q! to exit without saving)
+
+vim = editing tool,viz improved version of vi editor (press insert for editing mode and esc for non-editing mode, press :wq to save+exit and :q! to exit without saving)
+
+wc (word count):
+wc -l file.txt= show the no of lines in file.txt
+wc -c file.txt= show the no of characters in file.txt
+wc -w file.txt= show the no of words in file.txt
+
+tar = GNU  `tar' saves many files together into a single tape or disk archive, and can restore individual files from the archive.
+
+gzip= gzip is used to compress and reduce the size of file
+gunzip = used to decompress the files compressed by gzip
+
+scp = secure copy (remote file copy program). scp copies files between hosts on a network.
+
+grep = will catch the files matching the similar pattern as given input.
+
+find / -name sample.txt = will search for sample.txt file under root directory/entire filesystem.
+
+locate= used to indentify the path of  file (use sudo updatedb before using command)
+
+apt = apt is a package manager use to install, update and upgrade the pacakges on debain based distros of linux like ubuntu
+apt= advance pacakging tool
+
+yum= yum is a package manager use to install, update and upgrade the packages on red-hat based distros of linux like centos and amazon-linux
+yum= yellow-dog update modifier
+
+top= display real-time system updates as well as a list of top consuming processes or threads currently being managed by the Linux kernel.
+
+htop = Htop is a free interactive process viewer for Linux. It  is  similar to top, but allows you to scroll vertically and horizontally, so we can see all the processes running on the system.
+
+ps (process status)= reports a snapshot of processes currently being managed by the Linux kernel.
+ps -ef = reports snapshot of all processes
+
+kill PID (process ID)= kill is use to terminate the process
+
+(ping = packet internet groper)
+ping domain/ip = used to check if connection is established or not/ check the network connectivity over the network.
+
+ip address = used to check the private ip of machine and routing
+
+nslookup domain.com =  Nslookup is a program to query Internet domain name servers.
+
+curl = retrieve the information from internet and displays it on terminal
+wget =   GNU Wget is a free utility for non-interactive download of files from the Web. Wget is non-interactive, meaning that it can work in the background, while the user is not logged on.  This is sometimes referred to as "recursive downloading."
+
+The main difference between them is that curl will show the output on the console. On the other hand, wget will download it into a file.
+
+cron = utility to schedule and automate the execution of commands or scripts at fixed times, day, dates or intervals.
+crontab -l = will list the scheduled cron jobs
+crontab -e = will open the crontab file and helps to edit it.
+
+Run-levels in linux (0 to 6)
+sudo init 0 = will shut-down the system
+sudo init 3 = by default we work under runlevel 3 (multi user CLI mode)
+sudo init 6 = will stop the system and then restart it.
+
+systemctl = service manager
+sudo systemctl status ssh = used to check the status of service
+sudo systemctl start ssh = start the service
+sudo systemctl enable ssh = enable ssh
+sudo systemctl stop ssh = stop service
+sudo systemctl restart ssh = restart the service
+
+traceroute domain.com = command used to print the route and time , that a packet takes to reach the host.
+
+telnet domain/ip port =used to check if a specific port is open for a server or not
+
+netstat (network statastics) = networking tool used for troubleshooting and configuration, also use as monitoring tool for connections over the network.
+sudo netstat -ntpl = will list which ports are open for the server
+
+awk = awk is a pattern scanning and text processing language used for extracting and processing data in file.
+awk, is basically use to segment the output of command to effectively read it.
+#Using awk we can retrieve the ouput generated by previous command based on column numbers.
+e.g- df -h | awk '{print $1, $4, $5}' = here, awk command will take output generated by df -h command as input, and print the column 1st, 4th and 5th, separately.
+
+nproc = to check the no of cpu's.
+
