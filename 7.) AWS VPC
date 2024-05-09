@@ -1,0 +1,104 @@
+1. **What is AWS VPC?**
+   
+   AWS VPC, or Amazon Virtual Private Cloud, is a service that allows you to launch Amazon Web Services resources in a logically isolated section of the AWS Cloud. It enables you to define your own virtual network environment, including IP address range, subnets, and configuration of route tables and network gateways.
+
+2. **Explain the need for AWS VPC.**
+   
+   The need for AWS VPC arises from the requirement to have a private, isolated section in the AWS Cloud to deploy resources. This provides control over the virtual networking environment, including selection of IP address ranges, creation of subnets, and configuration of route tables and network gateways. It allows for enhanced security, network segmentation, and customization based on specific application requirements.
+
+3. **How does VPC work?**
+
+   AWS VPC works by allowing users to define a virtual network environment in which they can launch AWS resources. It utilizes subnets, route tables, and network gateways to control the traffic flow and provide isolation. Users can customize the IP address range, create multiple subnets, and configure routing to meet the needs of their applications.
+
+4. **List and explain the components of VPC with their need.**
+
+   - **Subnets:** Allow segmentation of the network for better organization and security.
+   - **Route Tables:** Define rules for routing network traffic between subnets.
+   - **Internet Gateway:** Enables communication between instances in the VPC and the internet.
+   - **NAT Gateway:** Allows instances in a private subnet to initiate outbound traffic to the internet.
+   - **Security Groups:** Act as virtual firewalls for instances to control inbound and outbound traffic.
+   - **Network Access Control Lists (NACLs):** Operate at the subnet level and act as a firewall for controlling traffic in and out of subnets.
+
+5. **What are the features and advantages of AWS VPC?**
+   
+   - **Isolation:** Logical isolation of resources.
+   - **Customization:** Ability to define IP address ranges, subnets, and routing tables.
+   - **Security:** Enhanced security through security groups and NACLs.
+   - **Scalability:** Easily scale resources within the defined virtual network.
+
+6. **Why do IT companies use VPC service offered by AWS? Explain.**
+
+   IT companies use AWS VPC for its flexibility, scalability, and security features. It allows them to create a virtual network that mirrors traditional data center environments while taking advantage of the benefits of the cloud, such as on-demand resources and global availability.
+
+7. **How is using AWS VPC somewhat similar to using our own data center?**
+   
+   AWS VPC allows users to define their network architecture, including IP addressing, subnets, and routing tables, similar to how one would design a network in a traditional data center. This provides a familiar environment for those transitioning from on-premises infrastructure to the cloud.
+
+8. **What is CIDR? Explain its significance.**
+
+   CIDR, or Classless Inter-Domain Routing, is a method for allocating IP addresses and routing Internet Protocol packets. It allows for efficient use of IP address space and provides a flexible way to allocate and route IP addresses based on prefix lengths.
+
+9. **What is an Internet Gateway in a VPC? Explain its significance.**
+
+   An Internet Gateway is a horizontally scaled, redundant, and highly available VPC component that allows communication between instances in the VPC and the internet. It plays a crucial role in enabling outbound traffic from instances and facilitating internet-based services.
+
+10. **What are subnets? Explain the significance of subnetting in VPC.**
+
+    Subnets are segments of IP addresses in a VPC. They allow for the segmentation of the VPC into smaller, more manageable networks. Subnetting is significant for organizing resources, enhancing security through network segmentation, and optimizing network traffic.
+
+11. **What are route tables? Explain their significance in a VPC.**
+
+    Route tables define the rules for routing network traffic between subnets in a VPC. They play a key role in determining how traffic is directed within the virtual network. Each subnet in a VPC must be associated with a route table, which controls the traffic flow for that subnet.
+
+12. **Explain security groups and NACLs as the security components of a VPC.**
+
+    - **Security Groups:** Act as stateful firewalls that control inbound and outbound traffic at the instance level. They are associated with instances and regulate traffic based on user-defined rules.
+    - **Network Access Control Lists (NACLs):** Operate at the subnet level and act as stateless firewalls, controlling traffic in and out of subnets based on user-defined rules.
+
+13. **Explain what is stateful and statelessness in security groups and NACLs?**
+
+    - **Stateful:** In stateful filtering, once a connection is established, the firewall automatically allows the return traffic, regardless of the rules. Security Groups in AWS VPC operate in a stateful manner.
+    - **Stateless:** In stateless filtering, each packet is evaluated based solely on the information contained in that packet. NACLs in AWS VPC operate in a stateless manner.
+
+14. **If I have to deny someone trying to hack my VPC Network, how can I do it?**
+
+    You can enhance security in your VPC by using Security Groups and NACLs to explicitly deny unauthorized access. Regularly monitor and audit access logs, implement Multi-Factor Authentication (MFA), and keep your systems and applications up-to-date with security patches.
+
+15. **What is VPC endpoint? Explain its significance.**
+
+    A VPC endpoint enables you to privately connect your VPC to supported AWS services without requiring an internet gateway, NAT device, VPN, or direct connect connection. It enhances security by keeping traffic within the AWS network and provides a more efficient and cost-effective solution for accessing AWS services.
+
+16. **What is NAT Gateway? Explain how it works.**
+
+    A NAT Gateway allows instances in a private subnet to connect to the internet while preventing inbound traffic from reaching those instances. It provides internet connectivity for instances without exposing them directly to the internet. NAT Gateway translates outbound traffic from instances and manages the corresponding connections.
+
+17. **List the use cases where we need to provision a NAT Gateway for our private instances.**
+
+    - Enabling private instances to access the internet for software updates.
+    - Allowing private instances to communicate with external services or repositories.
+    - Facilitating licensing processes that require internet access for validation.
+
+18. **List and explain the Amazon recommended VPC best practices.**
+
+    - Use multiple Availability Zones for high availability.
+    - Properly design subnets and allocate appropriate IP address ranges.
+    - Use security groups and network ACLs effectively for security.
+    - Regularly backup and monitor VPC configurations.
+    - Utilize VPC flow logs for network traffic visibility.
+
+19. **List and explain the Amazon VPC's limits.**
+
+1. **Maximum VPCs per region:** As of my last update, this limit is typically around 5 VPCs per AWS region for new AWS accounts, but it can be increased upon request.
+
+2. **Maximum subnets per VPC:** The limit is often around 200 subnets per VPC, but this can vary based on the region and AWS account type.
+
+3. **Maximum Elastic IP addresses:** AWS typically imposes a default limit on the number of Elastic IP addresses per AWS account. It is around 5 Elastic IP addresses for new AWS accounts, with the possibility of increasing this limit.
+
+4. **Maximum security groups and rules:** AWS imposes limits on the number of security groups and rules per security group. As of my last update, this could be around 60 inbound and 60 outbound rules per security group, with a limit on the total number of rules.
+
+5. **Maximum network ACLs:** The limit on the number of Network Access Control Lists (NACLs) is typically around 20 per VPC, with a default rule limit per NACL.
+
+20. **What is the difference between internet speed and network bandwidth?**
+
+    - **Internet Speed:** Refers to the speed at which data is transferred between your device and the internet. It is typically measured in megabits per second (Mbps) or gigabits per second (Gbps).
+    - **Network Bandwidth:** Refers to the maximum data transfer rate of a network. It represents the capacity of the network to transmit data and is also measured in bits per second (bps), kilobits per second (Kbps), Mbps, or Gbps.
