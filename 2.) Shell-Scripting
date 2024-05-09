@@ -1,0 +1,118 @@
+Shell- scripting questions-answers
+
+1. **What is a terminal in Linux?**
+   - **Answer:** A terminal in Linux is a command-line interface that allows users to interact with the operating system by entering commands.
+
+2. **What is a shell in Linux?**
+   - **Answer:** In Linux, a shell is a command interpreter that takes user commands and executes them. It provides an interface for users to interact with the operating system.
+
+3. **What is the kernel in Linux?**
+   - **Answer:** The kernel in Linux is the core component of the operating system. It manages hardware resources and provides essential services for all other parts of the operating system.
+
+4. **Why is the kernel called the heart of Linux?**
+   - **Answer:** The kernel is called the heart of Linux because it is central to the operating system, managing resources, handling system calls, and facilitating communication between hardware and software.
+
+5. **How does Linux architecture work?**
+   - **Answer:** Linux follows a monolithic architecture where the kernel provides all essential services. User-level applications interact with the kernel through system calls for hardware access and other functionalities.
+
+6. **What is scripting?**
+   - **Answer:** Scripting involves writing sequences of commands to be executed by an interpreter. It is used for automating tasks and can be done in various scripting languages.
+
+7. **Difference between scripting and programming (in tabular form):**
+
+   | Aspect              | Scripting                          | Programming                       |
+   |---------------------|----------------------------------- |-----------------------------------|
+   | **Execution**       | Interpreted line by line           | Compiled as a whole               |
+   | **Performance**     | Generally slower                   | Generally faster                  |
+   | **Flexibility**     | More flexibility for quick tasks   | More structured for complex tasks |
+
+8. **What is shell scripting?**
+   - **Answer:** Shell scripting involves writing a series of commands for the shell to execute. It combines command-line operations into a script for automation.
+
+9. **List different types of Linux shells with their notation:**
+   - **Answer:** Some shells include Bash (Bourne Again SHell - `/bin/bash`), sh (Bourne Shell - `/bin/sh`), and zsh (Z SHell - `/bin/zsh`).
+
+10. **How does a shell script work?**
+    - **Answer:** A shell script works by executing a series of commands in the order they are written in the script file.
+
+11. **Advantages of shell scripting:**
+    - **Answer:** Shell scripting provides automation, repeatability, and the ability to handle repetitive tasks efficiently.
+
+12. **What is Bash scripting?**
+    - **Answer:** Bash scripting refers to writing scripts specifically for the Bash shell, which is a popular shell in Linux.
+
+13. **Steps to write a shell script:**
+    - **Answer:** 
+      1. Create a new file with a `.sh` extension.
+      2. Add shebang (`#!/bin/bash`) at the beginning.
+      3. Write your script.
+      4. Save the file.
+      5. Make it executable (`chmod +x script.sh`).
+
+14. **What is shebang? Role of shebang in Bash scripting?**
+    - **Answer:** Shebang (`#!`) is used at the beginning of a script to specify the interpreter. In Bash scripting, `#!/bin/bash` indicates that the script should be interpreted using the Bash shell.
+
+15. **What is a comment in a shell script? Purpose with use case?**
+    - **Answer:** A comment in a shell script is text ignored during execution. It is used for adding explanations or notes. Example: `# This is a comment`.
+
+16. **What is a variable in a shell script? Types and purpose with use case?**
+    - **Answer:** A variable is a placeholder for storing data. Types include local and environment variables. Example: `name="John"`.
+
+17. **What is a string in shell scripting?**
+    - **Answer:** A string in shell scripting is a sequence of characters enclosed in quotes. Example: `str="Hello"`.
+
+18. **What is an array in shell scripting?**
+    - **Answer:** An array is a variable that can store multiple values. Example: `arr=("value1" "value2")`.
+
+19. **Comparison operators in shell script (tabular form):**
+
+    | Operator | Description           |
+    |----------|-----------------------|
+    | -eq      | Equal                 |
+    | -ne      | Not equal             |
+    | -lt      | Less than             |
+    | -le      | Less than or equal    |
+    | -gt      | Greater than          |
+    | -ge      | Greater than or equal |
+
+20. **Conditional statements in shell script and why they are used?**
+    - **Answer:** Conditional statements (if, else, elif) are used to make decisions based on certain conditions. They control the flow of execution in a script.
+
+21. **Loops in shell script and their role?**
+    - **Answer:** Loops (for, while) are used for repetitive execution of a block of code. They iterate through a set of commands until a condition is met.
+
+22. **Positional arguments in a shell script?**
+    - **Answer:** Positional arguments are variables that hold values passed to a script at runtime. Example: `$1`, `$2` represent the first and second arguments.
+
+23. **Exit codes in shell scripting and use case?**
+    - **Answer:** Exit codes indicate the success or failure of a command. `0` usually means success. Use cases include error handling in scripts.
+
+24. **Best practices for writing shell scripts:**
+    - **Answer:** Use clear and meaningful variable names, comment code, handle errors gracefully, and follow a consistent coding style.
+
+25. **What is man-db in Linux and its uses?**
+    - **Answer:** `man-db` is a manual page system that provides documentation for commands and utilities in Linux. It is used to access manual pages.
+
+26. **What is the awk command in Linux and its uses in shell scripting?**
+    - **Answer:** `awk` is a text processing tool in Linux. It is used in shell scripting for pattern scanning and processing.
+
+27. **Difference between `#!/bin/bash` and `#!/bin/sh`?**
+    - **Answer:** `#!/bin/bash` specifies Bash as the interpreter, while `#!/bin/sh` may refer to a more basic shell. Bash supports additional features beyond the POSIX standard.
+
+28. **What is `set -x` in shell scripting?**
+    - **Answer:** `set -x` is used to enable debugging in a shell script. It displays each command and its arguments on the standard error output before executing.
+
+29. **Debug mode in shell scripting? How to run the script in debug mode?**
+    - **Answer:** Debug mode provides detailed information about script execution. Run a script in debug mode using `bash -x script.sh`.
+
+30. **Output of the Linux command: `date | echo "today's date is "`? Explain why.**
+    - **Answer:** The output is `today's date is` because `echo` does not read from the standard input (`|` pipes the output of `date` to `echo` but `echo` doesn't consume it).
+
+31. **What is `set -e` and `set -o` in shell scripting? Why are they used?**
+    - **Answer:** `set -e` exits the script if any command returns a non-zero status. `set -o` is used to set various options, like enabling debugging (`set -o errexit` is equivalent to `set -e`).
+
+32. **Difference between `wget` and `curl` command in Linux?**
+    - **Answer:** Both are tools to download files from the internet. `wget` is more straightforward for simple downloads, while `curl` is more feature-rich and supports a broader range of protocols.
+
+33. **Disadvantages of shell scripting?**
+    - **Answer:** Limited in handling complex tasks, can be slower for certain operations, and may have security concerns if not properly sanitized.
