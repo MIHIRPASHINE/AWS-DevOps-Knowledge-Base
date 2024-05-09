@@ -1,0 +1,185 @@
+1. **What is cloud computing?**
+   - Cloud computing is a technology that allows users to access and use computing resources (like servers, storage, databases, networking, software) over the internet, usually on a pay-as-you-go basis.
+
+2. **How does cloud computing work?**
+   - Cloud computing works by providing on-demand access to a pool of configurable computing resources through the internet. Users can provision and manage resources without needing to invest in or maintain physical infrastructure.
+
+3. **Why is the need for cloud computing?**
+   - Cloud computing meets the need for scalability, flexibility, cost-effectiveness, and the ability to access resources from anywhere. It eliminates the need for organizations to invest in and maintain their own infrastructure.
+
+4. **Advantages of cloud computing:**
+   - Cost efficiency, scalability, flexibility, reliability, and accessibility are key advantages. It also promotes collaboration, enables automatic updates, and provides a variety of services.
+
+5. **What is capacity planning in cloud computing?**
+   - Capacity planning in cloud computing involves estimating the amount of resources needed to meet current and future demand, ensuring optimal performance without over-provisioning or under-provisioning.
+
+6. **What is a cloud service provider?**
+   - A cloud service provider is a company that offers cloud services, delivering various computing resources and services over the internet.
+
+7. **Major cloud service providers:**
+   - Amazon Web Services (AWS), Microsoft Azure, Google Cloud Platform (GCP), IBM Cloud, and Oracle Cloud are major cloud service providers.
+
+8. **What is Amazon Web Services (AWS)?**
+   - AWS is a comprehensive cloud platform offering a wide range of services, including computing power, storage, databases, machine learning, analytics, and more.
+
+9. **What are data centers?**
+   - Data centers are facilities that house computer systems and related components, such as telecommunications and storage systems. They are used to manage and store large amounts of data.
+
+10. **Components of data centers:**
+    - Components include servers, networking equipment, storage systems, security devices, and power and cooling infrastructure.
+
+11. **Disadvantages of physical data centers over cloud computing:**
+    - Higher upfront costs, limited scalability, maintenance challenges, and the need for physical security are disadvantages of physical data centers compared to cloud computing.
+
+12. **What is the Software Development Life Cycle (SDLC)?**
+    - SDLC is a process used by software developers to design, develop, test, and deploy software systems.
+
+13. **Stages of SDLC:**
+    - Requirement analysis, planning, design, implementation, testing, deployment, and maintenance.
+
+14. **How is SDLC related to cloud computing?**
+    - Cloud computing facilitates and enhances various stages of SDLC by providing resources for development, testing, and deployment.
+
+15. **Briefly explain the waterfall model of software development:**
+    - The waterfall model is a linear and sequential approach to software development, where each phase must be completed before moving to the next.
+
+16. **Briefly explain the agile model of software development:**
+    - Agile is an iterative and flexible approach to software development, emphasizing collaboration, customer feedback, and the ability to adapt to changing requirements.
+
+17. **Briefly explain the DevOps model of software development:**
+    - DevOps is a culture and set of practices that combines software development (Dev) and IT operations (Ops) to improve collaboration, communication, and automation in the software delivery process.
+
+18. **How did software development happen before DevOps?**
+    - Before DevOps, software development and IT operations were often siloed, leading to communication gaps, slower release cycles, and increased chances of errors during deployment.
+
+19. **Need and advantages of DevOps:**
+    - DevOps addresses collaboration issues, accelerates delivery, enhances efficiency, and improves the overall quality of software development and deployment.
+
+20. **Disadvantages of waterfall and agile models over DevOps:**
+    - Waterfall may lead to inflexibility, while agile may face challenges in managing complex projects. DevOps integrates and improves upon these methodologies.
+
+21. **Frontend and backend in application development:**
+    - Frontend refers to the user interface and user experience, while backend deals with server-side logic, databases, and application functionality.
+
+22. **What is an operating system?**
+    - An operating system is software that manages computer hardware, software resources, and provides common services for computer programs.
+
+23. **Why do we need to use an operating system?**
+    - An operating system provides a user interface, manages hardware resources, and facilitates communication between software and hardware components.
+
+24. **Tasks performed by an operating system:**
+    - Memory management, process management, file system management, device management, and security.
+
+25. **Why is the operating system important for a machine?**
+    - The operating system acts as an intermediary between users and hardware, ensuring efficient utilization of resources and enabling the execution of applications.
+
+26. **Types of operating systems:**
+    - Types include batch operating systems, time-sharing systems, distributed systems, and real-time operating systems.
+
+27. **How did the previous generation create virtual machines on their local system?**
+    - Previous generations used hypervisors and virtualization software to create virtual machines on their local systems.
+
+28. **What is virtualization and hypervisor?**
+    - Virtualization is the process of creating a virtual (rather than actual) version of something. A hypervisor is software that enables virtualization by managing multiple operating systems on a single physical host.
+
+29. **How does virtualization using a hypervisor work?**
+    - The hypervisor allocates resources and manages multiple virtual machines on a single physical server, enabling them to run independently.
+
+30. **What is a virtual disk image (VDI)?**
+    - A virtual disk image is a file that represents a virtual hard disk used by a virtual machine.
+
+31. **Difference between virtualization and containerization:**
+    - Virtualization creates full virtual machines with separate operating systems, while containerization encapsulates applications and their dependencies in isolated containers that share the host OS.
+
+32. **Monolithic and microservices application architecture:**
+    - Monolithic is a single, unified codebase, while microservices divide an application into small, independent services that communicate over a network.
+
+33. **What is the Unix operating system?**
+    - Unix is a multi-user, multitasking operating system developed in the 1960s and widely used in server environments.
+
+34. **What is the Linux operating system?**
+    - Linux is a Unix-like operating system kernel, often used with other components to create complete operating systems.
+
+35. **What is GNU?**
+    - GNU is a free and open-source operating system and software ecosystem, often used with the Linux kernel.
+
+36. **Fundamentals of Linux and its existence:**
+    - Linux is a Unix-like operating system kernel created by Linus Torvalds. It exists as part of various Linux distributions.
+
+37. **What is the Linux kernel?**
+    - The Linux kernel is the core component of the Linux operating system, managing hardware resources and providing essential services.
+
+38. **Why Linux is the most used OS for application development and deployment?**
+    - Linux is preferred for its stability, security, open-source nature, and the availability of development tools and libraries.
+
+39. **Why is Linux called a kernel?**
+    - Linux is named after its kernel, the core component responsible for managing system resources.
+
+40. **Features of the Linux operating system:**
+    - Multiuser, multitasking, security, portability, and open-source nature are key features.
+
+41. **Linux distributions and examples:**
+    - Distributions include Ubuntu, Fedora, CentOS, Debian, and Arch Linux, each with its own package management system.
+
+42. **What is a shell?**
+    - A shell is a command-line interface that allows users to interact with the operating system by entering commands.
+
+43. **Bash shell and its use:**
+    - Bash (Bourne Again SHell) is a popular shell in Linux used for scripting and executing commands.
+
+44. **Difference between Unix and Linux (in tabular form):**
+
+   | Aspect              | Unix                                      | Linux                                         |
+   |---------------------|----------------------------------------   |-----------------------------------------------|
+   | **Ownership**       | Traditionally proprietary                 | Open-source                                   |
+   | **Source Code**     | Closed source                             | Open source                                   |
+   | **Cost**            | Typically requires a license fee          | Generally free                                |
+   | **Kernel**          | Different versions with proprietary kernels | Kernel based on the Linux kernel            |
+   | **Community**       | Smaller, depending on the version         | Large and active open-source community        |
+
+45. **What is an interface? Explain GUI and CLI:**
+    - An interface is a point of interaction between a user and a computer system. GUI (Graphical User Interface) uses graphical elements, while CLI (Command Line Interface) relies on text-based commands.
+
+46. **Briefly explain the Linux architecture diagram:**
+    - The Linux architecture diagram shows the relationship between the hardware, kernel, shell, and user applications, illustrating how they interact.
+
+47. **LAN and WAN:**
+    - LAN (Local Area Network) is a network within a limited geographic area, while WAN (Wide Area Network) covers a larger geographical area.
+
+48. **What is AWS EC2?**
+    - Amazon Elastic Compute Cloud (EC2) is a web service that provides resizable compute capacity in the cloud, allowing users to run virtual servers.
+
+49. **Remote Desktop Protocol and how it works:**
+    - Remote Desktop Protocol (RDP) is a proprietary protocol that allows users to access and control a computer remotely over a network.
+
+50. **What is SSH and how does it work?**
+    - Secure Shell (SSH) is a cryptographic network protocol used for secure communication over an unsecured network. It provides a secure way to access and manage remote systems.
+
+51. **Different ways to connect to a Windows EC2 instance from the local system:**
+    - Methods include RDP (Remote Desktop Protocol) or connecting through AWS Systems Manager.
+
+52. **Different ways to connect to a Linux EC2 instance from the local system:**
+    - Methods include SSH Client (Secure Shell), EC2 Serial Console, EC2 instance connect, Session Manager using a terminal or PuTTY on Windows.
+    - AWS Systems Manager (SSM): Use AWS Systems Manager Session Manager to connect directly through the AWS Management Console without opening inbound ports.
+    - AWS CLI (Command Line Interface): Utilize the AWS CLI to SSH into an instance using the aws ec2 instance connect command, streamlining the connection process.
+
+53. **What is a command in Linux?**
+    - A command in Linux is a directive given to the operating system to perform a specific task.
+
+54. **File system hierarchy in Linux:**
+    - The file system hierarchy includes directories like /bin, /etc, /home, /var, and /usr, each serving specific purposes.
+
+55. **Functions of top-level directories associated with the root directory in Linux:**
+    - /bin (essential binaries), /etc (system configuration files), /home (user home directories), /var (variable data), and /usr (user-related programs and data).
+
+56. **Package manager in Linux:**
+    - A package manager is a tool that automates the process of installing, updating, configuring, and removing software packages. Examples include apt (Debian/Ubuntu) and yum (Red Hat/CentOS).
+
+57. **What is crontab in Linux and how does it work?**
+    - Crontab is a time-based job scheduler in Linux. Users can schedule tasks to run at specified intervals using cron expressions.
+
+58. **Open-source software:**
+    - Open-source software is software whose source code is freely available, allowing users to view, modify, and distribute the code.
+
+59. **Absolute path and relative path in Linux file system:**
+    - An absolute path specifies the complete directory structure from the root, starting with "/". A relative path specifies the location of a file or directory relative to the current working directory.
