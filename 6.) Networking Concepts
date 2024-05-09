@@ -1,1 +1,130 @@
 
+1. **What is the internet?**
+   - The internet is a global network of interconnected computers and devices that communicate using standard protocols.
+
+2. **How does the internet work?**
+   - The internet works through a decentralized architecture where data is transmitted in packets across various interconnected networks using the TCP/IP protocol suite.
+
+3. **What happens when you search something on your web browser/Google.com?**
+   - The process involves DNS resolution, TCP handshake, HTTP request, server processing, and HTTP response. The request is processed through routers, switches, and other networking components.
+
+4. **Why do we prefer optical fiber cables over satellite communication for data transmission?**
+   - Optical fiber cables offer higher bandwidth, lower latency, and better reliability compared to satellite communication, making them preferable for data transmission.
+
+5. **LAN, MAN, and WAN - Explain the difference.**
+   - LAN (Local Area Network) covers a small geographical area, MAN (Metropolitan Area Network) covers a city, and WAN (Wide Area Network) spans a large geographic distance, often globally.
+
+6. **What are ports and protocols in computer networking?**
+   - Ports are virtual endpoints for communication, and protocols are rules governing data exchange. They enable different applications to communicate over a network.
+
+7. **List networking protocols every cloud and DevOps engineer should know with descriptions and port numbers.**
+
+   | Protocol   | Description                                     | Port Number |
+   |------------|-------------------------------------------------|-------------|
+   | TCP        | Reliable, connection-oriented communication     | 80, 443     |
+   | UDP        | Unreliable, connectionless communication        | 53          |
+   | ICMP       | Network error reporting and diagnostics         | -           |
+   | HTTP       | Hypertext Transfer Protocol                     | 80          |
+   | HTTPS      | HTTP over SSL/TLS                               | 443         |
+   | FTP        | File Transfer Protocol                          | 20, 21      |
+   | SSH        | Secure Shell                                    | 22          |
+   | DNS        | Domain Name System                              | 53          |
+
+8. **What is OSI?**
+   - OSI (Open Systems Interconnection) is a conceptual framework that standardizes the functions of a telecommunication or computing system into seven abstract layers.
+
+9. **What are the seven layers of the OSI model?**
+   - Physical, Data Link, Network, Transport, Session, Presentation, and Application.
+
+10. **Explain the OSI model of networking and how it works?**
+    - The OSI model defines the communication process in seven layers, with each layer handling specific tasks. It ensures interoperability between different systems.
+
+11. **Which layer of OSI is called the heart of the OSI model and why?**
+    - The Transport layer is often considered the heart of the OSI model as it ensures reliable and end-to-end communication between systems.
+
+12. **What is DNS resolution?**
+    - DNS resolution is the process of translating a human-readable domain name into an IP address.
+
+13. **What is TCP Handshake?**
+    - The TCP Handshake is a three-step process (SYN, SYN-ACK, ACK) to establish a reliable connection between a client and a server.
+
+14. **What is the TCP/IP model of networking?**
+    - The TCP/IP model is a simpler, four-layer conceptual model that includes the Link, Internet, Transport, and Application layers.
+
+15. **What are the layers of the TCP/IP model?**
+    - Link, Internet, Transport, and Application.
+
+16. **Explain how the TCP/IP model works?**
+    - Similar to the OSI model, the TCP/IP model facilitates communication between devices on a network. Each layer has specific functions.
+
+17. **What is UDP model of networking?**
+    - UDP (User Datagram Protocol) is a connectionless protocol that provides faster, but less reliable, communication compared to TCP.
+
+18. **How does UDP model of networking work?**
+    - UDP transmits data without establishing a connection, making it faster but with no guarantee of delivery.
+
+19. **What is HTTP? HTTP and HTTPS run on which port?**
+    - HTTP (Hypertext Transfer Protocol) is a protocol for transmitting hypertext. HTTP runs on port 80, while HTTPS (HTTP Secure) runs on port 443.
+
+20. **Explain how HTTP works?**
+    - HTTP facilitates communication between web clients and servers. It is a request-response protocol where clients request resources, and servers respond with the requested data.
+
+21. **List and explain HTTP methods.**
+
+    - GET: Retrieve data from the server.
+    - POST: Submit data to the server.
+    - PUT: Update a resource on the server.
+    - DELETE: Remove a resource from the server.
+    - PATCH: Partially update a resource.
+
+22. **What is an IP address? What is the need for an IP address?**
+    - An IP address is a numerical label assigned to each device on a network. It is needed for identification and location addressing in the network.
+
+23. **What is IPv4 and IPv6? Explain the difference.**
+    - IPv4 uses 32-bit addresses, while IPv6 uses 128-bit addresses. IPv6 was introduced to address the exhaustion of IPv4 addresses and to provide enhanced features.
+
+24. **What is a private IP address and public IP address? Explain the difference.**
+    - Private IP addresses are used within a private network, while public IP addresses are assigned to devices on the internet, making them globally unique.
+
+25. **What are the IP address ranges for private IPs and public IPs? List in tabular form.**
+
+    | Type         | Range                |
+    |--------------|----------------------|
+    | Private IPv4 | 10.0.0.0 - 10.255.255.255, 172.16.0.0 - 172.31.255.255, 192.168.0.0 - 192.168.255.255 |
+    | Public IPv4  | Globally unique ranges assigned by ICANN |
+
+26. **What is DHCP? What's its need? How does it work?**
+    - DHCP (Dynamic Host Configuration Protocol) automates the assignment of IP addresses and other network configuration parameters to devices on a network.
+
+27. **What is DNS? What's its need? How does it work?**
+    - DNS (Domain Name System) translates human-readable domain names into IP addresses, enabling users to access resources using names instead of numerical addresses.
+
+28. **What is a MAC Address? What's its need? How does it work?**
+    - A MAC (Media Access Control) address is a unique identifier assigned to a network interface card for communication on a physical network. It ensures data is sent to the correct device on a local network.
+
+
+detailed explanations for the specified questions:
+
+2. **How does the internet work?**
+
+   - The internet operates on a packet-switching model, where data is divided into small packets for efficient transmission. These packets travel through various interconnected routers and switches, taking different routes to reach the destination. The Transmission Control Protocol (TCP) and Internet Protocol (IP) in the TCP/IP suite ensure reliable and standardized communication. For example, when you send a request to a website, the data is broken into packets, each with its own route, and then reassembled at the destination.
+
+3. **What happens when you search something on your web browser/Google.com?**
+
+   - When you enter a query in your web browser and hit Enter, the browser initiates a series of steps. First, it performs DNS resolution to translate the domain name (e.g., www.google.com) into an IP address. Then, a TCP handshake is established with the server. Once connected, an HTTP request is sent to the server, specifying the desired resource (e.g., /search?q=cloud). The server processes the request, retrieves the search results, and sends back an HTTP response. The browser then renders the received data, displaying the search results on your screen.
+
+10. **Explain the OSI model of networking and how it works?**
+
+    - The OSI (Open Systems Interconnection) model consists of seven layers, each with a specific function. For instance, the Physical layer deals with hardware and transmission media, while the Transport layer ensures reliable end-to-end communication. Consider the example of sending an email: The Application layer deals with the email client, the Presentation layer handles encryption, the Session layer manages the communication session, the Transport layer ensures data integrity, the Network layer routes the email across the internet, the Data Link layer frames the data for local transmission, and the Physical layer deals with the actual transmission medium.
+
+14. **What is the TCP/IP model of networking?**
+
+    - The TCP/IP model is a concise four-layer model. To illustrate, when you send an email using TCP/IP, the Application layer corresponds to the email client, the Transport layer manages reliable communication (TCP for email), the Internet layer handles addressing and routing, and the Link layer deals with local network communication. The TCP/IP model simplifies the networking process, making it more straightforward for practical implementation.
+
+18. **What is UDP model of networking?**
+
+    - UDP (User Datagram Protocol) is a connectionless protocol ideal for tasks where speed is crucial but occasional data loss is acceptable. For instance, online gaming relies on UDP for real-time communication between players. In this context, if a non-critical piece of game data is lost during transmission, the game prioritizes speed over retransmitting the lost information, resulting in a smoother gaming experience.
+
+20. **Explain how HTTP works?**
+
+    - HTTP (Hypertext Transfer Protocol) governs the communication between web clients and servers. When you request a webpage (e.g., http://www.example.com), the browser initiates a connection (TCP handshake) with the server on port 80. It then sends an HTTP GET request specifying the resource (/index.html). The server processes the request and responds with an HTTP status code and the requested content. For secure communication, HTTPS (HTTP Secure) is used on port 443, encrypting the data exchanged between the client and server, ensuring privacy and security during data transfer.
