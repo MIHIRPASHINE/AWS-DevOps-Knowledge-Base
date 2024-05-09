@@ -1,0 +1,48 @@
+
+1. **What is a server? Explain how does a server work?**
+   - A server is a computer or system that manages network resources and provides services to other computers, known as clients. Servers can handle various tasks, such as storing data, managing network traffic, or running applications. They work by receiving requests from clients, processing those requests, and returning the requested information.
+
+2. **Why do IT organizations need servers?**
+   - IT organizations need servers to centralize resources, store and manage data, host applications, and provide services to users. Servers enable efficient resource utilization, centralized control, and ensure reliability and scalability for various business needs.
+
+3. **List and explain the types of servers with their use cases:**
+   - *Web Server:* Handles HTTP requests, serves web pages (e.g., Apache HTTP Server).
+   - *Database Server:* Manages databases and handles database-related requests.
+   - *Application Server:* Runs application code and supports application-specific functionality.
+   - *File Server:* Manages and provides access to files over a network.
+   - *Mail Server:* Manages email communication and storage.
+
+4. **Explain the difference between a website, application, and a web application:**
+   - *Website:* A collection of web pages accessible via the internet.
+   - *Application:* Software designed to perform specific tasks or functions.
+   - *Web Application:* An application that is accessed through a web browser over a network.
+
+5. **Explain the difference between a web server and an application server in tabular form:**
+
+   | Criteria               | Web Server                                   | Application Server                |
+   |------------------------|-----------------------------------           |-----------------------------------|
+   | **Functionality**      | Handles HTTP requests, serves static content | Executes application logic, supports dynamic content |
+   | **Examples**           | Apache HTTP Server, Nginx                    | Tomcat, JBoss, WebSphere          |
+   | **Responsibility**     | Focuses on serving web pages and processing client requests | Executes business logic and manages application components |
+   | **Use Case**           | Ideal for hosting static content and handling web requests | Suited for running dynamic, data-driven applications |
+
+6. **What is a web server?**
+   - A web server is a software or hardware system that handles HTTP requests from clients, typically web browsers, and serves static content like HTML, images, or CSS files.
+
+7. **What is Apache HTTP webserver? Why is it used?**
+   - Apache HTTP Server is open-source software that serves as a widely-used web server. It is known for its reliability, flexibility, and extensibility. It supports a variety of features, including SSL/TLS encryption, virtual hosting, and URL redirection.
+
+8. **List and explain the components of Apache HTTP Webserver:**
+   - *HTTPD (Apache Daemon):* The core server process.
+   - *Modules:* Add-on components that extend server functionality.
+   - *Configuration files:* Settings that define server behavior.
+   - *Access Control: * Manages user access and permissions.
+
+9. **What is Nginx web server? Why is it used?**
+   - Nginx is a high-performance, open-source web server and reverse proxy server. It is used for its efficient handling of concurrent connections, low resource consumption, and ability to serve as a reverse proxy for load balancing and caching.
+
+10. **List and explain the components of Nginx web server:**
+    - *Nginx Core:* The main process that manages events and worker processes.
+    - *Modules:* Add-ons that provide additional features.
+    - *Configuration Files:* Define server settings and behavior.
+    - *Access Control:* Manages user access and permissions.
