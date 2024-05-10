@@ -1,0 +1,53 @@
+QUE- HOW CAN WE HANDLE AND CONTROL TWO OR MORE AWS ACCOUNTS ON AWS CLI
+--------------------------------------------------------------------------
+
+WE CAN HANDLE MULTIPLE ACCOUNTS BY CREATING THEIR PROFILE NAMES USING THE OPTION OF --profile AND CONFIGURING USING THEIR ACCESS AND SECRET KEYS
+
+RUN THE FOLLOWING COMMAND:
+
+aws configure --profile account-1
+access key: xxxxx
+secret key: xxxx
+region: xxxxx
+def format: xxx
+
+aws configure --profile account-2
+access key: xxxxx
+secret key: xxxx
+region: xxxxx
+def format: xxx
+
+now lets say we have to list the s3 buckets for account 2
+aws s3 ls --profile account-2
+
+let say we want to describe the instances in account 1
+aws ec2 describe-instances --profile account-1
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+NOTE: AS A BEST PRACTICE, AWS RECOMMENDS NOT TO USE ACCESS KEYS TO CONFIGURE AWS CLI, CREATE AND USE IAM ROLES FOR REQUIRED PERMISSIONS TO THE AWS SERVICES.
+
+IAM ROLES CAN BE CREATED WITH REQ PERMISSIONS AND ATTACHED TO EC2 TO USE THE SERVICE ON THE CLI.
+---------------------------------------------------------------------------------------------------------------------------------------
+
+COMMANDS:
+
+aws ec2 run-instances --options = will create ec2 instance
+aws ec2 describe-instances = will show the info about instances on aur aws account
+
+aws s3 mb s3://unique-bucket-name = will create bucket
+aws s3 cp sourcefile s3://bucket = will copy objects into the bucket
+aws s3 mv sourcefile s3://bucket = will move objects into the bucket
+aws s3 mv s3://bucket/sourcefile ~ = will move file from s3 to local destination
+aws s3 ls = will list the buckets in your account
+aws s3 ls s3://bucket : will list the objects in the bucket
+aws s3 rm s3://bucket/sourcefile :will remove object from bucket
+aws s3 rb s3://bucket : will delete the bucket
+aws s3 rb s3://bucket --force : will delete bucket, even if not empty
+
+aws s3 sync localsourcefile s3://bucketname : will copy the file to s3 bucket/ will copy the changes in sourcefile to s3 bucket
+aws s3 sync localsourcefile s3://bucketname --delete : will delete the files from s3 that is deleted from local
+aws s3 sync s3://bucketname sourcefile : will add the contents from s3 to local
+
+
+
+
