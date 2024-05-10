@@ -1,0 +1,144 @@
+CREATE A VPC USING AWS CLI:
+----------------------------
+
+#to create a VPC
+aws ec2 create-vpc --cidr-block 10.0.0.0/16 
+
+#to create a tag for VPC
+aws ec2 create-tags --resources vpc-0a416ee3a49461b01 --tags Key=Name,Value=test
+
+#create internet gateway for the VPC
+aws ec2 create-internet-gateway 
+
+#to create tag for igw
+aws ec2 create-tags --resources igw-056ebafd851e05b0a --tags Key=Name,Value=test-igw
+
+#attach igw to my vpc
+aws ec2 attach-internet-gateway --internet-gateway-id igw-056ebafd851e05b0a --vpc-id vpc-0a416ee3a49461b01
+
+#create a public subnet
+aws ec2 create-subnet --vpc-id vpc-0a416ee3a49461b01 --cidr-block 10.0.0.0/24
+#attach tag to subnet
+aws ec2 create-tags --resources subnet-0bc7ecb7d71f26a49 --tags Key=Name,Value=public-subnet
+
+#create a private subnet
+aws ec2 create-subnet --vpc-id vpc-0a416ee3a49461b01 --cidr-block 10.0.1.0/24
+#attach tag to subnet
+aws ec2 create-tags --resources subnet-05b9cc81249dc02b0 --tags Key=Name,Value=private-subnet
+
+#create public route table
+aws ec2 create-route-table --vpc-id vpc-0a416ee3a49461b01
+#create tag for route table
+aws ec2 create-tags --resources rtb-066937257efa7d730 --tags Key=Name,Value=public-route-table
+
+#create private route table
+aws ec2 create-route-table --vpc-id vpc-0a416ee3a49461b01
+#create tag for route table
+aws ec2 create-tags --resources rtb-04b0c7a11a7eca053 --tags Key=Name,Value=private-route-table
+
+#associate public subnet to public route table
+aws ec2 associate-route-table --route-table-id rtb-066937257efa7d730 --subnet-id subnet-0bc7ecb7d71f26a49
+
+#associate private subnet to private route table
+aws ec2 associate-route-table --route-table-id rtb-04b0c7a11a7eca053 --subnet-id subnet-05b9cc81249dc02b0
+
+#add igw route to public route table
+aws ec2 create-route --route-table-id rtb-066937257efa7d730 --destination-cidr-block 0.0.0.0/0 --gateway-id igw-056ebafd851e05b0a
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#AWS CLI PROJECT
+
+#create VPC with specified CIDR in specified region
+aws ec2 create-vpc --cidr-block 10.0.0.0/20 --region us-east-1 
+
+#create a tag for the VPC
+aws ec2 create-tags --resources vpc-060ca5aa4e34a5737 --tags Key=Name,Value=test-vpc
+
+#create a public subnet with 2k IP's in az us-east-1a
+aws ec2 create-subnet --vpc-id vpc-060ca5aa4e34a5737 --cidr-block 10.0.0.0/21 --availability-zone us-east-1a
+
+#create tag for the public subnet
+aws ec2 create-tags --resources subnet-078082f1afde3930d --tags Key=Name,Value=public-subnet
+
+#create a private subnet with 256 IP's in az us-east-1b
+aws ec2 create-subnet --vpc-id vpc-060ca5aa4e34a5737 --cidr-block 10.0.8.0/24 --availability-zone us-east-1b
+
+#create tag for the public subnet
+aws ec2 create-tags --resources subnet-01a4fc35d0fa8bc8a --tags Key=Name,Value=private-subnet
+
+#create public route table
+aws ec2 create-route-table --vpc-id vpc-060ca5aa4e34a5737
+
+#create tag for public route table
+aws ec2 create-tags --resources rtb-0dff9c2c16bb05f09 --tags Key=Name,Value=public-route-table
+
+#create private route table
+aws ec2 create-route-table --vpc-id vpc-060ca5aa4e34a5737
+
+#create tag for private route table
+aws ec2 create-tags --resources rtb-049b95a99675d1f09 --tags Key=Name,Value=private-route-table
+
+#create internet gateway fot VPC
+aws ec2 create-internet-gateway
+
+#create tag for igw
+aws ec2 create-tags --resources igw-05f2adf9c83824e61 --tags Key=Name,Value=test-igw
+
+#attach igw to test vpc
+aws ec2 attach-internet-gateway --internet-gateway-id igw-05f2adf9c83824e61 --vpc-id vpc-060ca5aa4e34a5737
+
+#associate the public subnet with public rt
+aws ec2 associate-route-table --route-table-id rtb-0dff9c2c16bb05f09 --subnet-id subnet-078082f1afde3930d
+
+#associate the private subnet with private rt
+aws ec2 associate-route-table --route-table-id rtb-049b95a99675d1f09 --subnet-id subnet-01a4fc35d0fa8bc8a
+
+#add igw route to public route table
+aws ec2 create-route --route-table-id rtb-0dff9c2c16bb05f09 --destination-cidr-block 0.0.0.0/0 --gateway-id igw-05f2adf9c83824e61
+
+#CONGRATS!! VPC SUCCESSFULLY CREATED!!
+
+#before creating instance in the public subnet, we have to enable public ip's for the subnet
+aws ec2 modify-subnet-attribute --subnet-id subnet-078082f1afde3930d --map-public-ip-on-launch
+
+#create security group
+aws ec2 create-security-group --group-name MySSH-SecurityGroup --description "My security group" --vpc-id vpc-060ca5aa4e34a5737
+
+#add inbound ssh rule to the security group
+aws ec2 authorize-security-group-ingress --group-id sg-0a98204c48abd7c2c --protocol tcp --port 22 --cidr 0.0.0.0/0
+
+#add tag to the security group
+aws ec2 create-tags --resources sg-0a98204c48abd7c2c --tags Key=Name,Value=TEST-SSH-SG
+
+#create instance 
+aws ec2 run-instances --instance-type t2.micro --image-id ami-0c0b74d29acd0cd97 --key-name nvirgkeypair --subnet-id subnet-078082f1afde3930d --security-group-ids sg-0a98204c48abd7c2c --count 1
+
+#create tag for instance 
+aws ec2 create-tags --resources i-0870aa433ba82a383 --tags Key=Name,Value=Project-cli
+
+#INSTANCE SUCCESFULLY CREATED
+
+#connect to instance using ssh
+ssh -i nvirgkeypair.pem ec2-user@107.23.166.253
+
+#install aws cli
+sudo yum -y install unzip  #before installing aws cli download unzip
+
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
+#configure aws cli
+run command : aws configure
+
+put the access key, secret key, region,default format
+
+# create S3 bucket
+aws s3 mb s3://aws-project-cli
+
+#Take backup of the Root / dir to the file named backup.tar
+tar -cf backup.tar /
+
+#trasfer backup.tar to s3 bucket
+aws s3 cp /home/ec2-user/backup.tar s3://mihirkipehlibucket
