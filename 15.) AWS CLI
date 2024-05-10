@@ -1,0 +1,108 @@
+### AWS CLI:
+
+**1. What is AWS CLI?**
+   AWS CLI (Command Line Interface) is a set of open-source tools for interacting with Amazon Web Services (AWS) through the command line. It allows users to control and manage AWS services directly from the terminal, providing a command-line alternative to the AWS Management Console.
+
+**2. Explain its significance in detail:**
+   - **Efficiency:** Enables users to automate tasks and manage resources efficiently.
+   - **Scripting and Automation:** Facilitates the creation of scripts for automating repetitive tasks.
+   - **Flexibility:** Offers a powerful and flexible interface to interact with various AWS services.
+   - **Integration:** Can be easily integrated into scripts, allowing seamless interaction with AWS resources.
+
+**3. How AWS CLI works in detail:**
+   AWS CLI sends requests to AWS services' APIs over HTTPS. It requires valid AWS credentials for authentication and authorization. The AWS CLI commands map directly to AWS service APIs, allowing users to perform various operations programmatically.
+
+**4. Why we need AWS CLI with specific use cases:**
+   - **Automating Deployment:** Deploying applications and infrastructure automatically.
+   - **Managing Resources:** Creating, updating, and deleting AWS resources.
+   - **Scripted Operations:** Enabling scripted operations for day-to-day tasks.
+   - **Integration with CI/CD:** Integrating AWS CLI into CI/CD pipelines for continuous deployment.
+
+**5. Day-to-day tasks and actions performed by Cloud and DevOps Engineer using AWS CLI:**
+   - Provisioning and managing EC2 instances.
+   - Configuring and managing S3 buckets.
+   - Setting up security groups and network configurations.
+   - Monitoring and logging using CloudWatch.
+   - Managing IAM roles and policies.
+   - Deploying and managing AWS Lambda functions.
+
+**6. Limitations of using AWS CLI:**
+   - **Learning Curve:** Requires knowledge of AWS services and their corresponding commands.
+   - **Limited GUI:** Lacks the graphical interface available in the AWS Management Console.
+   - **Syntax Complexity:** Commands can have complex syntax.
+
+**7. Best Practices for using AWS CLI:**
+   - **Secure Credential Management:** Use IAM roles and manage credentials securely.
+   - **Use of Profiles:** Organize credentials using named profiles.
+   - **Script Optimization:** Write efficient scripts to avoid unnecessary API calls.
+   - **Error Handling:** Implement proper error handling in scripts.
+
+**8. What are AWS SDKs? Explain its significance:**
+   AWS SDKs are software development kits provided by AWS to interact with their services programmatically. They include libraries, code samples, and documentation to help developers integrate AWS services into their applications.
+
+**9. Use cases where AWS SDKs are used:**
+   - **Application Development:** Integrating AWS services into custom applications.
+   - **Automation:** Building automation scripts for managing AWS resources.
+   - **Custom Solutions:** Developing solutions that require AWS service integration.
+   - **Cross-Platform Development:** Creating applications that run on various platforms using AWS services.
+
+Both AWS CLI and SDKs play crucial roles in the toolkit of a Cloud and DevOps Engineer, offering flexibility, automation, and programmatic control over AWS resources.
+
+
+#COMMANDS
+
+Certainly! Here are some common AWS CLI commands frequently used by AWS and DevOps engineers:
+
+1. **AWS Configuration:**
+   - `aws configure`: Set up AWS CLI with access key, secret key, region, and output format.
+
+2. **EC2 Instances:**
+   - `aws ec2 describe-instances`: Retrieve information about EC2 instances.
+   - `aws ec2 run-instances`: Launch new EC2 instances.
+   - `aws ec2 terminate-instances`: Terminate EC2 instances.
+
+3. **S3 (Simple Storage Service):**
+   - `aws s3 ls`: List S3 buckets or objects.
+   - `aws s3 cp`: Copy files to/from S3.
+   - `aws s3 sync`: Synchronize local files with S3.
+
+4. **IAM (Identity and Access Management):**
+   - `aws iam list-users`: List IAM users.
+   - `aws iam create-user`: Create a new IAM user.
+   - `aws iam attach-user-policy`: Attach a policy to a user.
+
+5. **CloudWatch:**
+   - `aws cloudwatch put-metric-data`: Publish custom metrics to CloudWatch.
+   - `aws cloudwatch get-metric-statistics`: Retrieve metric statistics from CloudWatch.
+
+6. **Lambda:**
+   - `aws lambda list-functions`: List Lambda functions.
+   - `aws lambda create-function`: Create a new Lambda function.
+   - `aws lambda invoke`: Invoke a Lambda function.
+
+7. **CloudFormation:**
+   - `aws cloudformation create-stack`: Create a new CloudFormation stack.
+   - `aws cloudformation describe-stack-events`: View events for a specific stack.
+   - `aws cloudformation delete-stack`: Delete a CloudFormation stack.
+
+8. **Elastic Beanstalk:**
+   - `aws elasticbeanstalk create-application`: Create an Elastic Beanstalk application.
+   - `aws elasticbeanstalk create-environment`: Create an Elastic Beanstalk environment.
+   - `aws elasticbeanstalk update-environment`: Update an Elastic Beanstalk environment.
+
+9. **RDS (Relational Database Service):**
+   - `aws rds describe-db-instances`: Get information about RDS instances.
+   - `aws rds create-db-instance`: Create a new RDS instance.
+   - `aws rds delete-db-instance`: Delete an RDS instance.
+
+10. **VPC (Virtual Private Cloud):**
+    - `aws ec2 describe-vpcs`: List VPCs.
+    - `aws ec2 create-vpc`: Create a new VPC.
+    - `aws ec2 create-subnet`: Create a new subnet in a VPC.
+
+11. **ECS (Elastic Container Service):**
+    - `aws ecs list-clusters`: List ECS clusters.
+    - `aws ecs create-cluster`: Create a new ECS cluster.
+    - `aws ecs run-task`: Run a task on an ECS cluster.
+
+These commands cover a range of AWS services and are foundational for managing resources, deploying applications, and automating various tasks in a cloud environment. It's essential for AWS and DevOps engineers to be familiar with these commands for efficient management of AWS resources.
