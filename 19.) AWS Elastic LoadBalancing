@@ -1,0 +1,52 @@
+1. **What is Load Balancing and its Significance?**
+   Load balancing is a technique used to distribute incoming network traffic across multiple servers to ensure no single server bears too much load. The significance lies in improving the availability and reliability of applications, optimizing resource utilization, and providing a seamless experience for users by preventing overload on any specific server.
+
+2. **AWS Load Balancers and their Significance:**
+   AWS provides load balancing solutions that distribute incoming traffic across multiple instances for increased fault tolerance and availability. Elastic Load Balancing (ELB) is a service that automatically scales and balances incoming application traffic.
+
+3. **How Load Balancers Work (Step-by-Step):**
+   - Clients send requests to the load balancer.
+   - The load balancer forwards the request to one of the registered instances.
+   - The instance processes the request and sends the response back to the load balancer.
+   - The load balancer forwards the response to the client.
+
+4. **Types of Load Balancers in AWS:**
+   - **Application Load Balancer (ALB):** Best suited for HTTP/HTTPS traffic.
+   - **Network Load Balancer (NLB):** Ideal for TCP/UDP traffic.
+   - **Classic Load Balancer (CLB):** Legacy option supporting both HTTP/HTTPS and TCP/UDP.
+
+5. **Internet-facing Load Balancer and Internal Load Balancer:**
+   - **Internet-facing Load Balancer:** Routes traffic from clients over the internet to the backend instances.
+   - **Internal Load Balancer:** Routes traffic within a Virtual Private Cloud (VPC) and is not exposed to the internet.
+
+6. **Listener and Routing in AWS Load Balancer:**
+   - A listener is a process that checks for connection requests.
+   - Routing determines how the load balancer routes traffic to instances.
+   - They work together to ensure incoming traffic is directed to the appropriate backend instances based on rules and conditions.
+
+7. **AWS Target Groups:**
+   - Target groups are used to route requests to one or more registered targets.
+   - They enable you to group instances and route traffic based on rules.
+
+8. **Automated Health Checks with AWS Target Groups:**
+   - Target groups perform health checks by sending requests to the registered targets.
+   - If a target fails a health check, it is removed from the load balancer until it passes.
+
+9. **Healthy and Unhealthy Threshold in AWS Load Balancer:**
+   - Healthy threshold: The number of consecutive successful health checks required.
+   - Unhealthy threshold: The number of consecutive failed health checks required.
+
+10. **AWS Cross Zone Load Balancing:**
+    - Distributes traffic evenly across instances in all enabled availability zones.
+    - Ensures better fault tolerance and availability.
+
+11. **explain in detail, how Load balancers ensures high availability and fault tolerancy to the infrastructure?**
+    - Load balancers distribute traffic across multiple instances, preventing a single point of failure.
+    - They automatically adjust to changes in traffic and can reroute traffic in case of instance failures.
+
+12. **Benefits of Using Load Balancers:**
+    - Improved availability and fault tolerance.
+    - Scalability by distributing traffic across multiple instances.
+    - Enhanced security by offloading SSL termination.
+    - Centralized management of traffic distribution.
+
