@@ -1,0 +1,20 @@
+The AWS Shared Responsibility Model defines the division of responsibilities between AWS, as the cloud service provider, and the customer, who uses AWS services. It outlines who is responsible for securing what within the cloud environment. Understanding this model is crucial for ensuring the security and compliance of applications and data hosted on AWS.
+
+1. **AWS Responsibilities**:
+   - AWS is responsible for the security **of** the cloud. This means AWS is accountable for safeguarding the infrastructure that runs all of the services offered in the AWS Cloud.
+   - AWS ensures the physical security of data centers, including protection against natural disasters, physical intrusions, and other potential threats.
+   - AWS also manages the security of the underlying infrastructure, such as the hardware, software, networking, and facilities that support the cloud services.
+
+2. **Customer Responsibilities**:
+   - Customers are responsible for the security **in** the cloud. This includes securing the data, applications, configurations, and identity and access management (IAM) within their AWS environment.
+   - Customers are accountable for configuring their resources securely. This involves setting up appropriate security groups, network access controls, encryption, and other security measures based on best practices and compliance requirements.
+   - Customers are responsible for managing user access to AWS services through IAM. This includes creating and managing user accounts, assigning permissions, and ensuring least privilege access.
+   - Customers are responsible for data protection, including encryption of data at rest and in transit, as well as implementing backup and recovery mechanisms to protect against data loss.
+   - Customers are responsible for implementing monitoring and logging solutions to detect and respond to security incidents in a timely manner.
+
+3. **Shared Responsibilities**:
+   - Some responsibilities are shared between AWS and the customer. For example, while AWS manages the security of the underlying infrastructure, customers are responsible for securing their data and applications hosted on that infrastructure.
+   - Security is a shared responsibility across various layers of the cloud stack, including the physical, network, host, application, and data layers.
+   - Collaboration between AWS and customers is essential for maintaining a secure and compliant cloud environment. AWS provides security features and services, while customers are responsible for effectively using those tools and implementing additional security controls as needed.
+
+In summary, the AWS Shared Responsibility Model clarifies the respective roles and responsibilities of AWS and its customers in securing the cloud environment. By understanding and adhering to this model, organizations can effectively mitigate security risks and ensure compliance with relevant regulations and standards.
