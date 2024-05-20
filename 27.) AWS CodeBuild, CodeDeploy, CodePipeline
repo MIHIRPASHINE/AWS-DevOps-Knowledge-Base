@@ -1,0 +1,49 @@
+
+### AWS CodeBuild
+
+**What is AWS CodeBuild and why is it used?**
+AWS CodeBuild is a fully managed build service that compiles source code, runs tests, and produces software packages that are ready to deploy. It eliminates the need to set up, manage, and scale your own build servers. It integrates with various AWS services and GitHub, allowing for a seamless CI/CD pipeline. CodeBuild is used because it automates the process of building code and preparing it for deployment, ensuring that every build is executed in a consistent, reliable, and scalable manner. It supports various programming languages and frameworks, making it versatile for different project needs.
+
+**How AWS CodeBuild Works?**
+When you initiate a build, CodeBuild first prepares a build environment based on the settings you've provided (like the computing resources, the build image, etc.). Then, it downloads the source code from the specified source (like Amazon S3, GitHub, Bitbucket, etc.). After the source code is downloaded, CodeBuild executes the build commands you've defined in the buildspec.yml file, which could include commands for compiling the code, running tests, and producing artifacts. Once the build is completed, the artifacts are uploaded to a specified output location, such as an S3 bucket. Throughout the process, CodeBuild provides logs and metrics that can be monitored to understand the build's progress and troubleshoot any issues.
+
+### AWS CodePipeline
+
+**What is AWS CodePipeline and why is it used?**
+AWS CodePipeline is a continuous integration and continuous delivery (CI/CD) service that automates the steps required to release your software changes. It is used to model complex release processes as it automates the build, test, and deploy phases of your release process every time there is a code change, based on the release model you define. This automation enables you to rapidly and reliably deliver features and updates.
+
+**How AWS CodePipeline works?**
+CodePipeline automates the steps required to release your software changes. You define a pipeline that specifies the source repository (e.g., GitHub, AWS CodeCommit), build service (e.g., AWS CodeBuild), and deployment method (e.g., AWS CodeDeploy, Amazon ECS). The pipeline automatically triggers each step in the process whenever there is a code change. Each step in the pipeline is represented by a stage, and each stage can consist of one or more actions. These actions can be configured to run in sequence or parallel, providing flexibility to model your specific release process.
+
+### AWS CodePipeline vs. Jenkins
+
+**Advantages of AWS CodePipeline:**
+- **Fully Managed Service:** AWS CodePipeline is a fully managed service, reducing the need to manage servers or infrastructure for your CI/CD processes.
+- **Integration with AWS Services:** Seamless integration with other AWS services like AWS CodeBuild, AWS CodeDeploy, and AWS Lambda for end-to-end automation within the AWS ecosystem.
+- **Scalability:** Automatically scales to handle high loads without the need for manual intervention.
+
+**Disadvantages of AWS CodePipeline:**
+- **Limited to AWS:** While it integrates well within the AWS ecosystem, it might not be as flexible for projects that rely heavily on non-AWS tools and services.
+- **Learning Curve:** Understanding and utilizing the full capabilities of AWS CodePipeline requires a good grasp of AWS services.
+
+**Jenkins Advantages:**
+- **Flexibility and Extensibility:** Jenkins has a vast ecosystem of plugins, allowing it to integrate with virtually any tool in the CI/CD pipeline, whether it's for build, test, deploy, or beyond.
+- **Open Source:** Free to use, which can reduce costs, especially for small projects or startups.
+
+**Jenkins Disadvantages:**
+- **Maintenance Overhead:** Requires setting up, managing, and scaling your own servers.
+- **Complexity:** Configuring Jenkins and its plugins can be complex and time-consuming.
+
+**Usecases:**
+- **AWS CodePipeline** is ideal for projects already heavily invested in the AWS ecosystem, requiring seamless integration with AWS services.
+- **Jenkins** is suitable for projects requiring high customization and those not tied to a specific cloud provider.
+
+### AWS CodeDeploy
+
+**What is AWS CodeDeploy and why is it used?**
+AWS CodeDeploy is a service that automates code deployments to any instance, including Amazon EC2 instances, AWS Fargate, AWS Lambda, and your on-premises servers. CodeDeploy makes it easier for you to rapidly release new features, helps avoid downtime during application deployment, and handles the complexity of updating your applications, without many of the risks associated with manual processes.
+
+**How AWS CodeDeploy works?**
+AWS CodeDeploy automates the deployment process, allowing you to deploy reliably and consistently. You start by creating a deployment group (a set of EC2 instances, Lambda functions, or on-premises servers on which the application will be deployed). Then, you specify the application revision (the code and any applicable configuration files) in either Amazon S3, GitHub, or Bitbucket. CodeDeploy then automates the deployment, following the appspec.yml file instructions to stop the old version, deploy the new version, and manage the application's lifecycle hooks to validate the deployment. Throughout the deployment process, you can monitor the status and get detailed reports on the deployment progress.
+
+Understanding these services and how they work together will be crucial for your role as a Junior AWS DevOps Engineer, enabling you to design, manage, and automate CI/CD pipelines efficiently.
