@@ -1,0 +1,162 @@
+
+#install ansible on amazon linux
+sudo amazon-linux-extras install ansible2
+
+#inventory
+#make sure to copy private key file using scp on ansible master and allot read permission. (chmod nvirgkeypair 400)
+
+-Example of a More Complex INI-style Ansible Hosts Inventory
+-Group of Hosts are delimited by header elements
+
+[web]
+w1 ansible_host=172.31.32.11 ansible_user=ec2-user ansible_ssh_private_key_file=/home/ec2-user/nvirgkeypair.pem
+[app]
+a1 ansible_host=172.31.32.110 ansible_user=ec2-user ansible_ssh_private_key_file=/home/ec2-user/nvirgkeypair.pem
+[db]
+d1 ansible_host=172.31.42.224 ansible_user=ec2-user ansible_ssh_private_key_file=/home/ec2-user/nvirgkeypair.pem
+--------------------------------------------------------------------------------------------------------------------
+#to check if connecttion is established from ansible server to hosts server
+ansible all -m "ping"
+
+#to create files/folders on all servers
+ansible all -m "file" -a "path=/home/ec2-user/samplefile state=present"
+
+ansible all -m "file" -a "path=/home/ec2-user/folder state=present"
+
+#to install and start httpd on appservers
+ansible appservers -m "package" -a "name=httpd state=present" -b
+
+ansible appservers -m "service" -a "name=httpd state=started enabled=true" -b
+
+#install git on appservers
+ansible appservers -m "package" -a "name=git state=present" -b
+
+#clone code on appservers
+ansible appservers -m "git" -a "dest=/var/www/html/ repo=https://github.com/Akiranred/ecomm.git" -b
+--------------------------------------------------------------------------------------------------------------------
+
+#single task in a single-playbook
+---
+- name: Update all the servers
+  hosts: all
+
+  tasks:
+  - name: ensure file is created
+    file:
+       path: /home/ec2-user/sample.txt
+       state: touch
+
+----------------------------------------------------       
+
+#multiple task in a single-playbook
+---
+- name: update all servers
+  hosts: all
+
+  tasks:
+  - name: ensure file is created
+    file:
+      path: /home/ec2-user/code.txt
+      state: touch
+
+  - name: ensure work-directory is created
+    file:
+       path: /home/ec2-user/work-dir
+       state: directory
+
+  - name: ensure the app-dir is created
+    file:
+        path: /home/ec2-user/app-dir
+        state: directory
+
+--------------------------------------------        
+
+# install httpd on all servers and clone code on specific servers
+---
+- name: update all the servers
+  hosts: all
+  become: yes  #to run as root user
+
+  tasks:
+  - name: install httpd on all the servers
+    package:
+     name: httpd
+     state: present
+
+  - name: ensure httpd is started
+    service:
+      name: httpd
+      state: started
+
+  - name: ensure httpd is enabled
+    service:
+      name: httpd
+      enabled: yes
+
+  - name: install git
+    package:
+      name: git
+      state: present
+
+- name: update the app servers
+  hosts: app
+
+  tasks:
+  - name: clone code to app servers
+    git:
+      dest: /var/www/html/
+      repo: https://github.com/Ai-TechNov/Food-App.git
+
+- name: update the db servers
+  hosts: db
+
+  tasks:
+  - name: clone code to app servers
+    git:
+      dest: /var/www/html/
+      repo: https://github.com/Ai-TechNov/mario.git  
+---------------------------------------------------------------      
+
+##Abhishek class demo:
+
+#password less authentication for target servers from ansible server
+
+-run the command "ssh-keygen" on all the servers including ansible server and then copy the public key content from ansible server into the authorized key of target servers.
+
+#adhoc commands
+ansible -i inventory.yml all -m "shell" -a "nproc"  #to check no of cpu         
+          #inv file name
+
+ansible -i inventory.yml all -m "shell" -a "df"   #to check the disk space
+
+
+ansible -i inventory.yml all -m "copy" -a "src=/home/ec2-user/copied-file dest=/home/ec2-user/"  #to copy a file from master to all the targets
+
+#####
+
+#This is how, we would run playbook, if we are not using default inventory file (/etc/ansible/hosts), but created own inventory file in current working dir.
+
+- ansible -i inventory.yml all -m ping
+
+- ansible-playbook -i inventory.yml first-playbook.yml
+-----------------------------------------------------------------------------------------------------
+
+#to create a new ansible-role for e.g kubernetes configuration
+ ansible-galaxy role init kubernetes
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+Below is a simple Ansible playbook that demonstrates the basics of running a "Hello, World!" task on your managed nodes. This playbook will create a text file on the managed nodes containing the string "Hello, World!".
+
+Ansible Playbook: helloworld.yml
+
+---
+- name: Ansible Hello World Playbook
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Create a file with "Hello, World!" content
+      copy:
+        dest: /tmp/helloworld.txt
+        content: "Hello, World!\n"
