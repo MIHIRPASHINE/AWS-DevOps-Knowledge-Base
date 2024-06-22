@@ -1,0 +1,79 @@
+
+### What is Ansible and why is it used in IT organizations?
+
+Ansible is an open-source automation tool or platform used for IT tasks such as configuration management, application deployment, intraservice orchestration, and provisioning. Organizations use Ansible because it simplifies complex tasks and enables IT teams to automate their daily workflow processes. It uses a simple syntax written in YAML, called playbooks. Ansible is agentless, meaning it doesn't require any software or firewall ports on the client systems it manages. It works by connecting to nodes and pushing out small programs, called "Ansible modules," which it executes. These modules can reside on any machine, without needing servers, daemons, or databases.
+
+### Tasks performed by cloud and DevOps engineers as configuration management?
+
+Cloud and DevOps engineers use configuration management to maintain system, software, and service configurations consistently and automatically. Tasks include:
+
+- Automating server setup, software installation, and updates.
+- Managing code deployments and rollback plans.
+- Ensuring consistent environments across development, testing, staging, and production.
+- Version control and change management of configurations and scripts.
+- Monitoring system performance and applying configurations as needed for optimization.
+
+### What are Adhoc commands in Ansible and list the use cases where they are used by cloud and DevOps engineers?
+
+Adhoc commands in Ansible are commands executed to perform a quick operation but not saved for later use. They are useful for tasks that don't need a playbook. Use cases include:
+
+- Quickly gathering information from a group of servers.
+- Starting or stopping services on multiple servers.
+- Removing temporary files from all nodes.
+- Checking disk space or running processes on various servers.
+
+### What are Ansible Playbooks and list the use cases where they are used by cloud and DevOps engineers?
+
+Ansible Playbooks are YAML files for describing desired states, system configurations, or steps to deploy applications. Use cases include:
+
+- Provisioning and managing cloud infrastructure.
+- Automating the deployment of applications.
+- Managing configuration changes across multiple systems.
+- Automating repetitive tasks like backups and reports.
+- Orchestrating complex deployments, such as rolling updates.
+
+### What is inventory/hosts file in Ansible?
+
+The inventory file in Ansible contains a list of managed nodes (servers). It is an ini or YAML file where you define the nodes or groups of nodes on which tasks should be executed. You can specify variables that can be used in playbooks and organize nodes into groups.
+
+### What are Ansible modules and why are they used?
+
+Ansible modules are discrete units of code that can be invoked from a playbook, or from an ad hoc command to perform a task on a remote server. Modules are used because they abstract away the complexity of managing different systems through a unified interface, allowing tasks such as installing packages, copying files, or managing services and users to be performed in a standardized and repeatable manner.
+
+### Advantages of using Ansible over other configuration management tools like Puppet, Chef, and Salt?
+
+- **Simplicity and Ease of Use:** Ansible uses a simple YAML syntax, making it easy to write and understand playbooks.
+- **Agentless:** Requires no agents on the managed nodes, reducing overhead and complexity.
+- **Modular and Extensible:** With a vast library of modules, Ansible can manage almost any IT task.
+- **Declarative Language:** You describe the desired state rather than the steps to get there, which is easier to manage and understand.
+- **Strong Community Support:** A vibrant and active community for support, modules, roles, and playbooks.
+
+### Feature of dynamic inventory in Ansible?
+
+Dynamic inventory allows Ansible to use sources like cloud providers' APIs to dynamically fetch a list of hosts to manage based on current state. It means you don't need to hard-code IP addresses or hostnames in your inventory file, enabling more scalable and flexible configurations, particularly in environments where infrastructure changes frequently.
+
+### Real-time method to configure password-less authentication to host servers from an Ansible controller server?
+
+To configure password-less authentication, use SSH keys:
+
+1. Generate an SSH key pair on the Ansible controller server with `ssh-keygen`.
+2. Copy the public key to the managed nodes using `ssh-copy-id user@hostname`. This step requires you to enter the user's password on the managed nodes once.
+3. Once copied, Ansible can communicate with the managed nodes without needing to authenticate again.
+
+### What is Ansible Galaxy?
+
+Ansible Galaxy is a repository for sharing and downloading Ansible roles. Roles are pre-packaged, reusable, and standardized Ansible work units that can be used in playbooks. Galaxy provides a great resource to find roles that can help automate your tasks or serve as a starting point for your own roles.
+
+### What are Ansible roles and explain why are they used with use cases?
+
+Ansible roles are sets of related tasks, variables, files, and templates organized in a predefined directory structure. They promote the reuse of code and make playbooks simpler and more manageable. Use cases include setting up a web server, configuring a database, or deploying an application. Roles can be easily shared between projects or with the community via Ansible Galaxy.
+
+### List and explain the use cases, where Ansible is used by cloud and DevOps engineers?
+
+- **Provisioning Infrastructure:** Automating the creation and management of cloud resources.
+- **Continuous Deployment:** Streamlining the deployment process to ensure consistent and reliable application updates.
+- **Configuration Management:** Applying and enforcing configuration settings across a range of environments in an idempotent manner.
+- **Application Deployment:** Automating the steps to deploy applications, ensuring that they are correctly configured and ready to run.
+- **Security and Compliance:** Automating security patching and compliance checks to ensure that systems meet regulatory standards.
+
+These explanations and details provide a solid foundation for answering interview questions related to Ansible and its role in cloud and DevOps practices, helping you convey your knowledge effectively.
