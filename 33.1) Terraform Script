@@ -1,0 +1,121 @@
+provider "aws" {
+  region = "us-east-1" # Change this to your desired AWS region
+}
+
+resource "aws_vpc" "my_vpc" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_subnet" "public_subnet_1" {
+  vpc_id     = aws_vpc.my_vpc.id
+  cidr_block = "10.0.1.0/24"
+  availability_zone = "us-east-1a"
+  map_public_ip_on_launch = true
+}
+
+resource "aws_subnet" "public_subnet_2" {
+  vpc_id     = aws_vpc.my_vpc.id
+  cidr_block = "10.0.2.0/24"
+  availability_zone = "us-east-1b"
+  map_public_ip_on_launch = true
+}
+
+resource "aws_subnet" "private_subnet_1" {
+  vpc_id     = aws_vpc.my_vpc.id
+  cidr_block = "10.0.3.0/24"
+  availability_zone = "us-east-1a"
+}
+
+resource "aws_subnet" "private_subnet_2" {
+  vpc_id     = aws_vpc.my_vpc.id
+  cidr_block = "10.0.4.0/24"
+  availability_zone = "us-east-1b"
+}
+
+resource "aws_route_table" "public_route_table" {
+  vpc_id = aws_vpc.my_vpc.id
+}
+
+resource "aws_route_table" "private_route_table" {
+  vpc_id = aws_vpc.my_vpc.id
+}
+
+resource "aws_route_table_association" "public_subnet_association_1" {
+  subnet_id      = aws_subnet.public_subnet_1.id
+  route_table_id = aws_route_table.public_route_table.id
+}
+
+resource "aws_route_table_association" "public_subnet_association_2" {
+  subnet_id      = aws_subnet.public_subnet_2.id
+  route_table_id = aws_route_table.public_route_table.id
+}
+
+resource "aws_route_table_association" "private_subnet_association_1" {
+  subnet_id      = aws_subnet.private_subnet_1.id
+  route_table_id = aws_route_table.private_route_table.id
+}
+
+resource "aws_route_table_association" "private_subnet_association_2" {
+  subnet_id      = aws_subnet.private_subnet_2.id
+  route_table_id = aws_route_table.private_route_table.id
+}
+
+resource "aws_route" "public_internet_gateway" {
+  route_table_id         = aws_route_table.public_route_table.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.my_igw.id
+}
+
+resource "aws_internet_gateway" "my_igw" {
+  vpc_id = aws_vpc.my_vpc.id
+}
+
+resource "aws_instance" "ec2_instance_public_1" {
+  ami           = "ami-01eccbf80522b562b" # Change to your desired AMI
+  instance_type = "t2.micro"
+  subnet_id     = aws_subnet.public_subnet_1.id
+  
+}
+
+resource "aws_instance" "ec2_instance_public_2" {
+  ami           = "ami-01eccbf80522b562b" # Change to your desired AMI
+  instance_type = "t2.micro"
+  subnet_id     = aws_subnet.public_subnet_2.id  
+}
+
+# You can create private instances similarly in the private subnets
+
+# Define the Elastic IP for the NAT Gateway
+resource "aws_eip" "nat" {
+  vpc = true
+}
+
+# Define the NAT Gateway
+resource "aws_nat_gateway" "nat" {
+  allocation_id = aws_eip.nat.id
+  subnet_id     = aws_subnet.public_subnet_1.id
+}
+
+# Add a route to the private route table for the NAT Gateway
+resource "aws_route" "private_nat_gateway" {
+  route_table_id         = aws_route_table.private.id
+  destination_cidr_block = "0.0.0.0/0"
+  nat_gateway_id         = aws_nat_gateway.nat.id
+}
+
+
+
+Directory Structure in Terraform
+--------------------------------
+
+main.tf - This is where the actual configuration will be executed from
+
+variables.tf - In this file, we define all the variables to be used in actual config file i.e main.tf
+
+terraform.tfvars - The significance of this file is that, the variables that we have declared inside our variables.tf, we can initialize those variables with the value over here.
+
+provider.tf - here we will enter the details regarding the provider we are using. e.g version and the region in which we want to built the infra
+
+backend.tf - this file will store the information from where we will access the tf.state file. e.g bucket name, key, region, dynamodb table. backend.tf file does not support the usage of variables and we need to hardcode the info directly.
+
+the name of tf.state file will be such that like prod.tfstate or dev.tfstate, so that we can identify it acc to env.
