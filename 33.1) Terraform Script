@@ -139,6 +139,11 @@ the name of tf.state file will be such that like prod.tfstate or dev.tfstate, so
 
 
 
+
+
+
+
+
 Directory Structure in Terraform
 --------------------------------
 
