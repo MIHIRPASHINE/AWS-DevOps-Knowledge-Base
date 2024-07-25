@@ -1,0 +1,79 @@
+# TO BUILD DOCKER IMAGE FROM STATIC CODE (static code doesn't needed to be compiled)
+
+-clone the git repo containing src code e.g- ecomm-code
+-navigate to code repo 
+-create Dockerfile
+
+#use FROM module to use httpd as base image
+FROM httpd
+
+#use copy module to copy the code to httpd doc root directory
+# . represents everything which is in the current working directory.
+COPY . /usr/local/apache2/htdocs/
+
+-be in code repo where Dockerfile is present and run following command to build the image
+- docker build -t mihirpashine/ecomm-app .
+-docker build -t mihirpashine/food-app .
+
+Note: for nginx server - doc root is /usr/share/nginx/html
+-#use from module to use the nginx as a base image
+FROM nginx
+
+#USE COPY COMMAND TO COPY THE CODE ON TO NGINX
+COPY . /usr/share/nginx/html
+
+# ONCE THE IMAGES ARE BUILD, CHECK USING COMMAND- docker images
+
+Run containers using images:- docker run -dt --name ecomm-app -p 8080:80 mihirpashine/ecomm-app
+                              docker run -dt --name food-app -p 9090:80 mihirpashine/food-app
+
+#ONCE THE IMAGES ARE BUILD, WE CAN PUSH IT TO REPO 
+-docker login
+ docker push img-name
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+#TO BUILD DOCKER IMAGE FROM DYNAMIC CODE (which need to be compiled using compilation tool like maven)
+e.g- JavaWebCalculator
+
+-clone JavaWebCalculator code
+-navigate to JavaWebCalculator code
+sudo yum -y install java-1.8*
+sudo yum -y install maven
+sudo mvn package
+
+- create Docker file
+
+#use FROM module to set the base image
+FROM tomcat
+
+#Copy Config files to webapps
+#USE RUN module to copy the content from one location to another inside the container
+RUN cp -R /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps
+
+#docker build -t mihirpashine/tomcat .
+
+#HERE TOMCAT IMAGE HAS CREATED WHICH WILL DIRECTLY LAND US TO LANDING PAGE OF TOMCAT
+
+NOW, copy the image/container id and navigate to target directory
+
+#create Dockerfile
+
+#use From module to use custom tomcat image as base image
+FROM d39277957d58
+
+#COPY THE .war file presnt locally to doc root of tomcat container
+COPY ./*.war /usr/local/tomcat/webapps/
+
+#run command = docker build -t mihirpashine/java-cal .
+
+#run container = docker run -dt --name java-cal-app -p 1111:8080 java-cal
+
+#Browse like this http://3.88.169.194:9191/webapp-0.2/
+
+#PUSH DOCKER IMAGES TO DOCKERHUB
+docker login
+docker push image-name
+
+-----------------------------------------------------------------------------------------------------------------------------------
+Dockerfile ref: https://docs.docker.com/reference/dockerfile/
