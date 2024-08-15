@@ -1,0 +1,257 @@
+PRACTICAL DEMONSTRATION @KIRAN-K8's PART-II
+-------------------------------------------
+
+#Create a instance/K8's WorkStation named as K8's WorksStation with : Centos7 OR RedHat as AMI, t2.medium as instance type and ALLOW ALL sec group.
+
+#Install and configure AWS CLI
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+
+sudo yum -y install unzip
+
+unzip awscliv2.zip
+
+sudo ./aws/install --update
+
+You can now run: /usr/local/bin/aws --version
+
+#Create an IAM Role for EC2 with admin access and attach it to the K8's WorksStation Instance.
+
+#Create an S3Bucket to store the configurations data/metadata of K8's cluster (etcd directory)
+-aws s3 mb s3://mihirjikibucket
+
+#Install Kubectl to control cluster
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+chmod +x ./kubectl
+
+sudo mv ./kubectl /usr/local/bin/kubectl
+
+kubectl version --client
+
+# install KOps to create kubernetes cluster
+# kops will not only help me to create, destroy, upgrade and maintain production-grade, highly available, Kubernetes cluster, but it will also provision the necessary highly available cloud infrastructure.
+
+- curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+
+- chmod +x kops-linux-amd64
+
+- sudo mv kops-linux-amd64 /usr/local/bin/kops
+
+-----------------------------------------------------------------------------
+#UPTILL HERE ALL THE PRE-REQUISITES ARE INSTALLED FOR CREATING K8's CLUSTER
+
+#Generate pub and private keys in order to communicate/authenticate with the master and worker nodes from k8's workstation.
+- ssh-keygen
+
+#In order to export the data/variables to S3bucket run the following command (S3 = etcd)
+- export KOPS_STATE_STORE=s3://mihirjikibucket
+
+#Create Cluster
+#using the following command k8's will create the 2-Node K8's Cluster and necessary cloud infrastructure will be automatically created by K8's. (2-Nodes = 2 Worker Nodes instances)
+- kops create cluster --name=test.k8s.local --state=s3://mihirjikibucket --zones=us-east-1a,us-east-1b --node-count=2 --yes
+
+#Build the cluster
+- kops update cluster test.k8s.local --yes --state=s3://mihirjikibucket
+
+-It will take 10-15 mins to create the cluster and build entire cloud architecture to deploy the application
+-Till the hold on
+
+#Run -export KOPS_STATE_STORE=s3://mihirjikibucket  
+
+#After 15 mins, run the following command to validate cluster creation
+- kops validate cluster test.k8s.local
+
+#Run the following command to check cluster detail
+- kops get cluster
+
+#Run the following command to check node/servers detail
+- kubectl get nodes
+
+--------------------------
+#First We'll learn how to deploy a image on container/Pod using K8's imperative commands (single line commands)
+
+#In order to run our first container/pod, we ll run the following command
+- kubectl run web --image=httpd
+
+#To get the list of pods running
+- kubectl get pods
+- kubectl get pods -o wide (to print detailed info with IP's of pods)
+
+#to check what all pods and services are running
+- kubectl get all
+
+But, running a standalone pod is useless, and we ll never practice it in real-time
+
+#to delete the pod
+kubectl delete pod/web
+--------------------------
+# Now we ll learn to deploy a pod using deployment unit, because deployment unit will ensure the backup of my pods
+-kubectl create deployment web --image=httpd
+
+-kubectl get all
+-kubectl get deploy (to list the deployment units)
+
+-Now, if we try to delete the pod using cmnd - kubectl delete pod-name, the depolyment unit will make sure to create a new pod immediately.
+
+but now, we want to run multiple pods, so we need to delete the deployment unit now.
+- kubectl delete deployment-unit-name
+------------------------------------
+
+#To Create multiples pods we need to make use of replica sets with deployment unit
+-kubectl create deployment web --image=httpd --replicas=5
+
+#to check the detail of all pods running
+-kubectl get all
+-kubectl get rs
+
+Now, if we try to delete any pods it will be created automatically by k8s deployment unit.
+
+All this is fine, pods are running, but now how to access it from web.
+So, to expose the application running inside pods, we need service layer.
+Service layer will help us create LoadBalancer and help us to expose the application.
+Que is what to expose- Ans is we need to expose the deployment unit
+
+- kubectl expose deployment.apps/web --port 80 --name httpd-service --type LoadBalancer
+
+-Run kubectl get all - to check if new LoadBalancer Service is created or not
+-Run kubectl get svc
+
+-paste the LoadBalancer DNS on web, and check if application is running or not. (It Works)
+
+#To delete LoadBalancer - kubectl delete LB-Name
+#To delete DeploymentUnit - kubectl delete DeploymentUnitName
+
+-This is how, K8'S Imperative commands works.
+- But the problem, every tym we need to expose the application, we can't run this single line commands.
+-Here, we need to follow some declarative approach
+----------------------------------------------------
+
+#Here Comes the concept of Kubernetes declarative manifest.
+#k8's Declarative manifest files are written in yaml, same like ansible playbooks.
+
+#To run a single pod using declarative manifest
+
+-run vi pod.yml
+insert
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web
+spec:
+  containers:
+  - name: web-container
+    image: httpd
+    ports:
+    - containerPort: 80
+
+esc :wq
+
+-This manifest will create a Pod named "web" with a single container named "web-container" running the Apache HTTP Server (httpd image). The container will expose port 80, which is the standard port for serving HTTP traffic.
+
+-To run the pod.yml = kubectl apply -f pod.yml
+-But the problem is, we dont want to run a single pod without deployment unit, as it is useless.
+
+-----------------------------
+Commands for debugging pod: 
+-kubectl logs pod-name = will prints the log details of pod
+-kubectl describe pod-name = will print all the info of pod
+-----------------------------
+
+#To run pods with deployment unit
+
+-Create deployment.yml
+insert
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecomm-deployment
+  labels: 
+    app: ecomm-app
+    tier: frontend
+spec:
+  replicas: 4  #how many pods i want
+  selector:
+    matchLabels:
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+Esc :wq
+
+This manifest will create a Deployment named "ecomm-deployment" with 4 replicas of a Pod template. Each Pod will contain a single container running the NGINX web server (nginx image) and will expose port 80 for HTTP traffic. The Deployment will manage Pods with the label tier: frontend, ensuring that 4 such Pods are always running.
+
+#To run the manifest file - kubectl apply -f deployment.yml
+#To check the pods detail- kubectl get all
+-----------------------------------------------
+
+But the problem is we want to also expose it, that too in declarative manner.
+
+#Here comes the service layer
+
+-Create vi service.yml
+
+Insert 
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ecomm-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    tier: frontend 
+
+Esc :wq
+
+This manifest will create a Service named "ecomm-service" of type LoadBalancer. The Service will expose port 80, making it accessible externally through a cloud provider's load balancer. The Service will route traffic to Pods that have the label tier: frontend. This setup is commonly used to expose applications running in a Kubernetes cluster to the outside world, allowing external clients to access them through a stable IP address provided by the load balancer.
+
+#Run- kubectl apply -f service.yml
+
+#Now to check LoadBalancer DNS
+#Run - kubectl get all
+#Browse the application using LoadBalancer's DNS you will be seeing nginx server running.
+
+-----------------------------------------------------------------
+
+Now to update the application image on nginx, just edit the deployment.yml file and replace the nginx image with custom image.
+e.g mihirpashine/ecomm-app
+e.g mihirpashine/food-app
+
+-Once image name is update Re-run the deployment file - kubectl apply -f deployment.yml
+----------------------------------------------------------------
+
+Now, even if we delete the pods, the deployment unit will instanly create new pods.
+Even if we delete the master and worker node/servers the ASGs will create new server automatically.
+
+------------------------
+#To login inside the pod
+- kubectl exec -it pod-name -- /bin/bash
+
+#to describe pod
+- kubectl describe pod-name
+-------------------------
+
+#To CleanUp the Resources
+
+-Kubectl get all
+
+-kubectl delete LB-ServiceName
+-kubectl delete DeploymentUnitName
+
+#DELETE CLUSTER
+-kops delete cluster --name=test.k8s.local --yes
+
+#DELETE THE EC2 INSTANCE i.e K8s WorksStation manually.
+
+####THE END###
