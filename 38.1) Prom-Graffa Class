@@ -1,0 +1,25 @@
+[Unit]
+Description=Prometheus Service
+After=network.target
+
+[Service]
+Type=Simple
+ExecStart=/usr/local/bin/prometheus/prometheus --config.file=/usr/local/bin/prometheus/prometheus.yml
+
+[Install]
+WantedBy=multi-user.target
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+[Unit]
+Description=Prometheus Node Exporter
+After=network.target
+
+[Service]
+Type=Simple
+ExecStart=/usr/local/bin/node_exporter
+
+[Install]
+WantedBy=multi-user.target 
+
+----------------------------------------------------------------------
+
